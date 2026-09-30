@@ -1,0 +1,38 @@
+[
+  {
+    "id": "tomate-perita",
+    "nombre": "Tomate perita",
+    "categoria": "Frutas y verduras",
+    "precio": 1850,
+    "unidad": "kg",
+    "emoji": "🍅",
+    "badge": "-15%"
+  },
+  {
+    "id": "papa-negra",
+    "nombre": "Papa negra",
+    "categoria": "Frutas y verduras",
+    "precio": 980,
+    "unidad": "kg",
+    "emoji": "🥔",
+    "badge": ""
+  },
+  {
+    "id": "leche-entera",
+    "nombre": "Leche entera La Serrana",
+    "categoria": "Lácteos",
+    "precio": 1150,
+    "unidad": "un.",
+    "emoji": "🥛",
+    "badge": ""
+  },
+  {
+    "id": "bife-chorizo",
+    "nombre": "Bife de chorizo",
+    "categoria": "Carnicería",
+    "precio": 9800,
+    "unidad": "kg",
+    "emoji": "🥩",
+    "badge": ""
+  }
+]

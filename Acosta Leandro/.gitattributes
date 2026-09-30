@@ -1,0 +1,10 @@
+# Normalizar saltos de línea en archivos de texto
+*.html   text eol=lf
+*.css    text eol=lf
+*.js     text eol=lf
+*.md     text eol=lf
+
+# Tratar binarios como binarios (sin conversión de EOL)
+*.pdf    binary
+*.png    binary
+*.jpg    binary

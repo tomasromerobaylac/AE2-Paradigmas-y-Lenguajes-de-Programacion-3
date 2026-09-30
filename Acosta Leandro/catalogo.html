@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Asíncrono — Mercado Fresco</title>
+<style>
+  :root {
+    --primary: #16281C;
+    --accent: #E8A93B;
+    --bg-main: #f4f7f2;
+    --card-bg: #ffffff;
+    --text-main: #2b382f;
+    --text-muted: #6b7c70;
+    --border-color: #e0e8de;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  h1 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* Grilla y Estilo de Tarjetas */
+  .box-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(22, 40, 28, 0.06);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .thumb {
+    background: #edf4eb;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+  }
+
+  .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .cat {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .product-card h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+  }
+
+  .unit {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  .btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn:hover {
+    background: #23412E;
+  }
+
+  .loading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Catálogo de Productos</h1>
+
+  <!-- Contenedor donde se inyectarán las tarjetas -->
+  <div class="box-grid" id="contenedor-productos">
+    <p class="loading">Cargando productos de forma asíncrona...</p>
+  </div>
+
+  <script>
+    // 1. Utilizar querySelector para capturar el contenedor
+    const contenedor = document.querySelector("#contenedor-productos");
+
+    // 2. Crear función asíncrona utilizando fetch para cargar el JSON en segundo plano
+    async function cargarProductos() {
+      try {
+        const respuesta = await fetch('productos.json');
+        
+        if (!respuesta.ok) {
+          throw new Error('No se pudo cargar el archivo JSON.');
+        }
+        
+        const productos = await respuesta.json();
+        
+        // Limpiar el texto de "Cargando..."
+        contenedor.innerHTML = '';
+
+        // 3. Recorrer el JSON y aplicar el estilo de tarjeta (Template Literals)
+        productos.forEach(prod => {
+          const tarjeta = document.createElement('div');
+          tarjeta.classList.add('product-card');
+
+          tarjeta.innerHTML = `
+            <div class="thumb">
+              ${prod.badge ? `<span class="badge">${prod.badge}</span>` : ''}
+              ${prod.emoji}
+            </div>
+            <div class="body">
+              <span class="cat">${prod.categoria}</span>
+              <h2>${prod.nombre}</h2>
+              <span class="unit">Precio por ${prod.unidad}</span>
+              <div class="row">
+                <span class="price">$${prod.precio.toLocaleString()}</span>
+                <button type="button" class="btn" data-id="${prod.id}">Agregar</button>
+              </div>
+            </div>
+          `;
+
+          contenedor.appendChild(tarjeta);
+        });
+
+      } catch (error) {
+        console.error("Error detectado:", error);
+        contenedor.innerHTML = `<p class="loading" style="color: #c62828;">Error al cargar los productos.</p>`;
+      }
+    }
+
+    // 4. Cargar los productos de forma asíncrona a través del evento 'load' utilizando addEventListener
+    window.addEventListener('load', () => {
+      cargarProductos();
+    });
+  </script>
+</body>
+</html>

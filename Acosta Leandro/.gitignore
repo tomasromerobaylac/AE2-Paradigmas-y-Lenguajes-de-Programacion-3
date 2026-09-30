@@ -1,0 +1,6 @@
+# Herramientas auxiliares para generar analisis-diseno.pdf (no forman parte del entregable)
+build_pdf.py
+logo-ucp.png
+logo-sistemas.png
+__pycache__/
+.DS_Store

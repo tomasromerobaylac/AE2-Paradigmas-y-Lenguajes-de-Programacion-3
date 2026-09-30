@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizar compra — Mercado Fresco</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ==========================================================
+     MEJORAS ESTÉTICAS Y VISUALES (Fondo, Colores y Componentes)
+     ========================================================== */
+  :root {
+    --primary: #16281C;
+    --primary-hover: #23412E;
+    --accent: #E8A93B;
+    --accent-hover: #d2942b;
+    --bg-main: #f4f7f2;
+    --card-bg: #ffffff;
+    --text-main: #2b382f;
+    --text-muted: #6b7c70;
+    --border-color: #e0e8de;
+    --success: #2e7d32;
+    --error: #c62828;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    background-image: 
+      radial-gradient(#d5e2d1 0.75px, transparent 0.75px), 
+      radial-gradient(#d5e2d1 0.75px, var(--bg-main) 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Barra superior más elegante */
+  .topbar {
+    background: linear-gradient(135deg, var(--primary), #203a29);
+    color: #e5ede2;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  /* Navegación principal */
+  .nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(22, 40, 28, 0.05);
+  }
+
+  /* Tarjetas principales con efecto flotante */
+  .form-card, .summary-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px -5px rgba(22, 40, 28, 0.08), 0 1px 3px rgba(0,0,0,0.02);
+    border: 1px solid var(--border-color);
+    padding: 2rem !important;
+    transition: transform 0.2s ease;
+  }
+
+  /* Fieldsets estilizados */
+  fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: #ffffff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.01);
+  }
+
+  legend {
+    font-weight: 700;
+    color: var(--primary);
+    padding: 0 0.75rem;
+    font-size: 1.05rem;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  /* Inputs y Textareas modernos */
+  input[type="text"], input[type="tel"], input[type="email"], textarea {
+    border-radius: 8px;
+    border: 1.5px solid var(--border-color);
+    padding: 12px;
+    background: #fafcf9;
+    transition: all 0.25s ease;
+    font-size: 0.95rem;
+  }
+
+  input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(22, 40, 28, 0.1);
+    outline: none;
+  }
+
+  /* Sección especial para el Cupón de Descuento */
+  .cupon-container {
+    background: linear-gradient(135deg, #f7faf5, #edf4eb);
+    border: 1.5px dashed var(--accent);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  /* Botones atractivos */
+  .btn-mustard {
+    background: var(--accent) !important;
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    transition: background 0.2s, transform 0.1s !important;
+  }
+
+  .btn-mustard:hover {
+    background: var(--accent-hover) !important;
+    transform: translateY(-1px);
+  }
+
+  /* Mensajes de validación de cupón */
+  .mensaje-exito {
+    color: var(--success);
+    font-weight: 600;
+    background: #e8f5e9;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 8px;
+    border-left: 4px solid var(--success);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mensaje-error {
+    color: var(--error);
+    font-weight: 600;
+    background: #ffebee;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 8px;
+    border-left: 4px solid var(--error);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Resumen de totales mejorado */
+  .summary-totals {
+    background: #f7faf5;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .summary-totals .total {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    border-top: 2px dashed var(--border-color);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  /* Footer refinado */
+  .footer {
+    background: var(--primary);
+    color: #d0ded0;
+    margin-top: 4rem;
+    border-top: 4px solid var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span>🚚 Retiro en el local o envío a domicilio en el día</span>
+    <span>🕒 Lun a Sáb 8:00–21:00 · 📍 San Martín 452</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="34" height="34" rx="4" fill="#16281C"/>
+        <path d="M9 13h16l-1.6 10.4a2 2 0 0 1-2 1.6H12.6a2 2 0 0 1-2-1.6L9 13Z" stroke="#E8A93B" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M13 13v-1.5a4 4 0 0 1 8 0V13" stroke="#E8A93B" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Mercado Fresco<small>ALMACÉN DE BARRIO</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="listado_tabla.html">Productos (tabla)</a>
+      <a href="listado_box.html">Productos (grilla)</a>
+      <a href="producto.html">Ficha de producto</a>
+    </nav>
+    <a href="comprar.html" class="nav-cta" aria-current="page">Ir a comprar <span class="cart-badge" data-cart-count>0</span></a>
+  </div>
+</header>
+
+<section class="section container">
+  <div class="section-head" style="margin-bottom: 2rem;">
+    <div>
+      <h1 style="color: var(--primary); font-size: 2.2rem; font-weight: 800;">Finalizar compra</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Completá tus datos de contacto y entrega. Revisá tu pedido antes de confirmar.</p>
+    </div>
+  </div>
+
+  <div class="checkout-layout">
+    <div class="form-card" id="form-card">
+      <h2 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.4rem;">📝 Datos de compra</h2>
+      <form id="checkout-form" novalidate>
+
+        <fieldset>
+          <legend>👤 Datos del cliente</legend>
+          <div class="field-grid">
+            <div class="field full">
+              <label for="nombre">Nombre y apellido</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: María Gómez" required>
+              <span class="field-error-msg">Ingresá tu nombre y apellido.</span>
+            </div>
+            <div class="field full">
+              <label for="direccion">Dirección de entrega</label>
+              <input type="text" id="direccion" name="direccion" placeholder="Calle, número, piso/depto" required>
+              <span class="field-error-msg">Ingresá la dirección de entrega.</span>
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="(0376) 15-000-0000" required>
+              <span class="field-error-msg">Ingresá un teléfono de contacto.</span>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="nombre@correo.com" required>
+              <span class="field-error-msg">Ingresá un e-mail válido.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Módulo de Código de Descuento con Estética Mejorada -->
+        <fieldset>
+          <legend>🎟️ Código de descuento</legend>
+          <div class="cupon-container">
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <input type="text" id="input-cupon" placeholder="Ej: UCP10" style="flex: 1;">
+              <button type="button" id="btn-validar-cupon" class="btn btn-outline" style="padding: 12px 20px; border-radius: 8px; border-color: var(--primary); color: var(--primary); font-weight: 600;">Aplicar</button>
+            </div>
+            <small id="mensaje-cupon" style="display: block;"></small>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>💳 Medio de pago</legend>
+          <div class="pay-options">
+            <label class="pay-option">
+              <input type="radio" name="pago" value="efectivo" checked>
+              <span>💵<br>Efectivo</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pago" value="tarjeta">
+              <span>💳<br>Tarjeta</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pago" value="transferencia">
+              <span>🏦<br>Transferencia</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>💬 Notas adicionales</legend>
+          <div class="field full">
+            <label for="notas">Aclaraciones para la entrega <span class="hint">(opcional)</span></label>
+            <textarea id="notas" name="notas" rows="3" placeholder="Ej: dejar el pedido en portería"></textarea>
+          </div>
+        </fieldset>
+
+        <p id="cart-error" class="field-error-msg" style="margin-bottom:14px;">Tu pedido está vacío: agregá al menos un producto antes de confirmar.</p>
+        <button type="submit" class="btn btn-mustard btn-block" style="padding: 14px; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(232, 169, 59, 0.3);">Confirmar pedido</button>
+      </form>
+
+      <div id="confirm-panel" class="confirm-panel" style="display:none; text-align: center; padding: 3rem 1rem;">
+        <span class="ico" style="font-size: 4rem;">🎉</span>
+        <h2 style="color: var(--primary); margin-top: 1rem;">¡Pedido confirmado con éxito!</h2>
+        <p id="confirm-text" style="margin: 1rem 0 2rem 0; color: var(--text-muted); font-size: 1.1rem;">Gracias por tu compra. Te contactaremos para coordinar la entrega.</p>
+        <a href="index.html" class="btn btn-mustard" style="padding: 12px 24px;">Volver al inicio</a>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <h2 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.4rem;">🛒 Tu pedido</h2>
+      <ul class="cart-list" id="cart-list"></ul>
+      <p class="cart-empty" id="cart-empty-msg" style="display:none;">Todavía no agregaste productos. Explorá el <a href="listado_box.html" style="color: var(--primary); font-weight: 600;">catálogo</a> para armar tu pedido.</p>
+
+      <div class="summary-totals">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-muted);"><span>Subtotal</span><span id="cart-subtotal" style="font-weight: 600; color: var(--text-main);">$0</span></div>
+        <div style="display: flex; justify-content: space-between; color: var(--text-muted);"><span>Envío</span><span id="cart-shipping" style="font-weight: 600; color: var(--text-main);">$800</span></div>
+        <div class="total" style="display: flex; justify-content: space-between; align-items: center;"><span>Total</span><span id="cart-total">$0</span></div>
+      </div>
+
+      <a href="listado_box.html" class="btn btn-outline btn-block" style="margin-top: 1.5rem; border-color: var(--border-color); color: var(--primary);">Seguir comprando</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div>
+      <h2>Mercado Fresco</h2>
+      <p>Almacén de barrio con envío a domicilio. Productos frescos elegidos todos los días.</p>
+    </div>
+    <div>
+      <h2>Navegación</h2>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="listado_tabla.html">Productos en tabla</a></li>
+        <li><a href="listado_box.html">Productos en grilla</a></li>
+        <li><a href="comprar.html">Comprar</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contacto</h2>
+      <ul>
+        <li>San Martín 452, Posadas</li>
+        <li>(0376) 444-2210</li>
+        <li>hola@mercadofresco.com.ar</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container bottom">
+    Trabajo práctico académico — Paradigmas y Lenguajes de Programación III.
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  const SHIPPING = 800;
+
+  function renderCart() {
+    const cart = MercadoCart.getCart();
+    const list = document.getElementById('cart-list');
+    const emptyMsg = document.getElementById('cart-empty-msg');
+    list.innerHTML = '';
+
+    if (cart.length === 0) {
+      emptyMsg.style.display = 'block';
+    } else {
+      emptyMsg.style.display = 'none';
+      cart.forEach((item) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="thumb-sm">${item.emoji}</div>
+          <div class="info">
+            <strong>${item.name}</strong>
+            <span>${item.qty} ${item.unit} × ${MercadoCart.formatPrice(item.price)}</span>
+            <br><button type="button" class="remove-btn" data-remove-id="${item.id}">Quitar</button>
+          </div>
+          <span class="line-price">${MercadoCart.formatPrice(item.qty * item.price)}</span>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    const subtotal = MercadoCart.cartSubtotal();
+    const shipping = cart.length > 0 ? SHIPPING : 0;
+    document.getElementById('cart-subtotal').textContent = MercadoCart.formatPrice(subtotal);
+    document.getElementById('cart-shipping').textContent = MercadoCart.formatPrice(shipping);
+    document.getElementById('cart-total').textContent = MercadoCart.formatPrice(subtotal + shipping);
+  }
+
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-remove-id]');
+    if (!btn) return;
+    MercadoCart.removeFromCart(btn.dataset.removeId);
+    renderCart();
+  });
+
+  // Función requerida: validarCupon()
+  function validarCupon() {
+    const inputCupon = document.getElementById('input-cupon');
+    const mensajeCupon = document.getElementById('mensaje-cupon');
+
+    // Limpiar espacios con .trim() y convertir a mayúsculas con .toUpperCase()
+    const codigo = inputCupon.value.trim().toUpperCase();
+
+    // Limpiar clases previas
+    mensajeCupon.classList.remove('mensaje-exito', 'mensaje-error');
+
+    // Condicionales solicitadas
+    if (codigo === "") {
+      mensajeCupon.textContent = "Por favor, ingrese un código";
+      mensajeCupon.classList.add('mensaje-error');
+    } else if (codigo === "UCP10") {
+      mensajeCupon.textContent = "¡Cupón aplicado! Tenés un 10% de descuento";
+      mensajeCupon.classList.add('mensaje-exito');
+    } else {
+      mensajeCupon.textContent = "Código inválido o vencido";
+      mensajeCupon.classList.add('mensaje-error');
+    }
+  }
+
+  // Vincular la función al botón de validar cupón
+  document.getElementById('btn-validar-cupon').addEventListener('click', validarCupon);
+
+  const form = document.getElementById('checkout-form');
+  const cartError = document.getElementById('cart-error');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    let valid = true;
+
+    form.querySelectorAll('[required]').forEach((input) => {
+      const errorMsg = input.closest('.field').querySelector('.field-error-msg');
+      const filled = input.value.trim() !== '';
+      const emailOk = input.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+      if (!filled || !emailOk) {
+        input.classList.add('field-error');
+        if (errorMsg) errorMsg.classList.add('is-visible');
+        valid = false;
+      } else {
+        input.classList.remove('field-error');
+        if (errorMsg) errorMsg.classList.remove('is-visible');
+      }
+    });
+
+    if (MercadoCart.getCart().length === 0) {
+      cartError.classList.add('is-visible');
+      valid = false;
+    } else {
+      cartError.classList.remove('is-visible');
+    }
+
+    if (!valid) return;
+
+    const nombre = document.getElementById('nombre').value.trim();
+    document.getElementById('confirm-text').textContent =
+      `Gracias, ${nombre}. Registramos tu pedido y te contactaremos para coordinar la entrega.`;
+    document.getElementById('checkout-form').style.display = 'none';
+    document.getElementById('confirm-panel').style.display = 'block';
+    MercadoCart.clearCart();
+    renderCart();
+  });
+
+  renderCart();
+</script>
+</body>
+</html>
