@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo en tabla — Mercado Fresco</title>
+<title>Catálogo en grilla — Mercado Fresco</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,8 +27,8 @@
     </a>
     <nav class="nav-links">
       <a href="index.html">Inicio</a>
-      <a href="listado_tabla.html" aria-current="page">Productos (tabla)</a>
-      <a href="listado_box.html">Productos (grilla)</a>
+      <a href="listado_tabla.html">Productos (tabla)</a>
+      <a href="listado_box.html" aria-current="page">Productos (grilla)</a>
       <a href="producto.html">Ficha de producto</a>
     </nav>
     <a href="comprar.html" class="nav-cta">Ir a comprar <span class="cart-badge" data-cart-count>0</span></a>
@@ -39,126 +39,123 @@
   <div class="section-head">
     <div>
       <h1>Catálogo completo</h1>
-      <p>Todos los productos disponibles, con precio, unidad de venta y stock actual en el local.</p>
+      <p>Los mismos productos que en la tabla, en formato de tarjetas para recorrer visualmente.</p>
     </div>
     <div class="view-toggle">
-      <a href="listado_tabla.html" aria-current="page">Tabla</a>
-      <a href="listado_box.html">Grilla</a>
+      <a href="listado_tabla.html">Tabla</a>
+      <a href="listado_box.html" aria-current="page">Grilla</a>
     </div>
   </div>
 
-  <div class="table-wrap">
-    <table class="products">
-      <caption>36 productos encontrados · actualizado hoy 09:40</caption>
-      <thead>
-        <tr>
-          <th scope="col">Producto</th>
-          <th scope="col">Categoría</th>
-          <th scope="col">Unidad</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Stock</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong><a href="producto.html">Tomate perita</a></strong></td>
-          <td><span class="tag">Frutas y verduras</span></td>
-          <td>Kg</td>
-          <td class="price">$1.850</td>
-          <td class="stock-ok">42 kg</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="tomate-perita" data-name="Tomate perita" data-price="1850" data-unit="kg" data-emoji="🍅">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Papa negra</a></strong></td>
-          <td><span class="tag">Frutas y verduras</span></td>
-          <td>Kg</td>
-          <td class="price">$980</td>
-          <td class="stock-ok">120 kg</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="papa-negra" data-name="Papa negra" data-price="980" data-unit="kg" data-emoji="🥔">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Banana ecuatoriana</a></strong></td>
-          <td><span class="tag">Frutas y verduras</span></td>
-          <td>Kg</td>
-          <td class="price">$1.320</td>
-          <td class="stock-low">6 kg</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="banana-ecuatoriana" data-name="Banana ecuatoriana" data-price="1320" data-unit="kg" data-emoji="🍌">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Leche entera La Serrana</a></strong></td>
-          <td><span class="tag">Lácteos</span></td>
-          <td>Sachet 1 L</td>
-          <td class="price">$1.150</td>
-          <td class="stock-ok">88 un.</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="leche-entera" data-name="Leche entera La Serrana" data-price="1150" data-unit="un." data-emoji="🥛">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Queso cremoso</a></strong></td>
-          <td><span class="tag">Lácteos</span></td>
-          <td>Bolsa 500 g</td>
-          <td class="price">$4.200</td>
-          <td class="stock-ok">30 un.</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="queso-cremoso" data-name="Queso cremoso" data-price="4200" data-unit="un." data-emoji="🧀">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Yogur bebible frutilla</a></strong></td>
-          <td><span class="tag">Lácteos</span></td>
-          <td>Botella 1 L</td>
-          <td class="price">$1.680</td>
-          <td class="stock-low">4 un.</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="yogur-frutilla" data-name="Yogur bebible frutilla" data-price="1680" data-unit="un." data-emoji="🍓">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Bife de chorizo</a></strong></td>
-          <td><span class="tag">Carnicería</span></td>
-          <td>Kg</td>
-          <td class="price">$9.800</td>
-          <td class="stock-ok">25 kg</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="bife-chorizo" data-name="Bife de chorizo" data-price="9800" data-unit="kg" data-emoji="🥩">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Milanesa de nalga</a></strong></td>
-          <td><span class="tag">Carnicería</span></td>
-          <td>Kg</td>
-          <td class="price">$8.100</td>
-          <td class="stock-ok">18 kg</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="milanesa-nalga" data-name="Milanesa de nalga" data-price="8100" data-unit="kg" data-emoji="🍖">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Pan francés</a></strong></td>
-          <td><span class="tag">Panadería</span></td>
-          <td>Kg</td>
-          <td class="price">$1.400</td>
-          <td class="stock-ok">60 kg</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="pan-frances" data-name="Pan francés" data-price="1400" data-unit="kg" data-emoji="🥖">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Facturas surtidas</a></strong></td>
-          <td><span class="tag">Panadería</span></td>
-          <td>Docena</td>
-          <td class="price">$3.600</td>
-          <td class="stock-low">3 doc.</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="facturas-surtidas" data-name="Facturas surtidas" data-price="3600" data-unit="doc." data-emoji="🥐">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Detergente x 750 ml</a></strong></td>
-          <td><span class="tag">Limpieza</span></td>
-          <td>Unidad</td>
-          <td class="price">$2.150</td>
-          <td class="stock-ok">40 un.</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="detergente" data-name="Detergente x 750 ml" data-price="2150" data-unit="un." data-emoji="🧴">Agregar</button></td>
-        </tr>
-        <tr>
-          <td><strong><a href="producto.html">Agua mineral sin gas</a></strong></td>
-          <td><span class="tag">Bebidas</span></td>
-          <td>Botella 2 L</td>
-          <td class="price">$1.050</td>
-          <td class="stock-ok">75 un.</td>
-          <td><button type="button" class="btn btn-outline" style="padding:8px 14px;font-size:.82rem;" data-add-to-cart data-id="agua-mineral" data-name="Agua mineral sin gas" data-price="1050" data-unit="un." data-emoji="💧">Agregar</button></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="box-grid">
+    <div class="product-card">
+      <div class="thumb"><span class="badge">-15%</span>🍅</div>
+      <div class="body">
+        <span class="cat">Frutas y verduras</span>
+        <h2><a href="producto.html?id=tomate-perita">Tomate perita</a></h2>
+        <span class="unit">Precio por kg</span>
+        <div class="row"><span class="price">$1.850</span><button type="button" class="btn" data-add-to-cart data-id="tomate-perita" data-name="Tomate perita" data-price="1850" data-unit="kg" data-emoji="🍅">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🥔</div>
+      <div class="body">
+        <span class="cat">Frutas y verduras</span>
+        <h2><a href="producto.html?id=papa-negra">Papa negra</a></h2>
+        <span class="unit">Precio por kg</span>
+        <div class="row"><span class="price">$980</span><button type="button" class="btn" data-add-to-cart data-id="papa-negra" data-name="Papa negra" data-price="980" data-unit="kg" data-emoji="🥔">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🍌</div>
+      <div class="body">
+        <span class="cat">Frutas y verduras</span>
+        <h2><a href="producto.html?id=banana-ecuatoriana">Banana ecuatoriana</a></h2>
+        <span class="unit">Precio por kg</span>
+        <div class="row"><span class="price">$1.320</span><button type="button" class="btn" data-add-to-cart data-id="banana-ecuatoriana" data-name="Banana ecuatoriana" data-price="1320" data-unit="kg" data-emoji="🍌">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🥛</div>
+      <div class="body">
+        <span class="cat">Lácteos</span>
+        <h2><a href="producto.html?id=leche-entera">Leche entera La Serrana</a></h2>
+        <span class="unit">Sachet 1 L</span>
+        <div class="row"><span class="price">$1.150</span><button type="button" class="btn" data-add-to-cart data-id="leche-entera" data-name="Leche entera La Serrana" data-price="1150" data-unit="un." data-emoji="🥛">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🧀</div>
+      <div class="body">
+        <span class="cat">Lácteos</span>
+        <h2><a href="producto.html?id=queso-cremoso">Queso cremoso</a></h2>
+        <span class="unit">Bolsa 500 g</span>
+        <div class="row"><span class="price">$4.200</span><button type="button" class="btn" data-add-to-cart data-id="queso-cremoso" data-name="Queso cremoso" data-price="4200" data-unit="un." data-emoji="🧀">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb"><span class="badge">Poco stock</span>🍓</div>
+      <div class="body">
+        <span class="cat">Lácteos</span>
+        <h2><a href="producto.html?id=yogur-frutilla">Yogur bebible frutilla</a></h2>
+        <span class="unit">Botella 1 L</span>
+        <div class="row"><span class="price">$1.680</span><button type="button" class="btn" data-add-to-cart data-id="yogur-frutilla" data-name="Yogur bebible frutilla" data-price="1680" data-unit="un." data-emoji="🍓">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🥩</div>
+      <div class="body">
+        <span class="cat">Carnicería</span>
+        <h2><a href="producto.html?id=bife-chorizo">Bife de chorizo</a></h2>
+        <span class="unit">Precio por kg</span>
+        <div class="row"><span class="price">$9.800</span><button type="button" class="btn" data-add-to-cart data-id="bife-chorizo" data-name="Bife de chorizo" data-price="9800" data-unit="kg" data-emoji="🥩">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🍖</div>
+      <div class="body">
+        <span class="cat">Carnicería</span>
+        <h2><a href="producto.html?id=milanesa-nalga">Milanesa de nalga</a></h2>
+        <span class="unit">Precio por kg</span>
+        <div class="row"><span class="price">$8.100</span><button type="button" class="btn" data-add-to-cart data-id="milanesa-nalga" data-name="Milanesa de nalga" data-price="8100" data-unit="kg" data-emoji="🍖">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🥖</div>
+      <div class="body">
+        <span class="cat">Panadería</span>
+        <h2><a href="producto.html?id=pan-frances">Pan francés</a></h2>
+        <span class="unit">Precio por kg</span>
+        <div class="row"><span class="price">$1.400</span><button type="button" class="btn" data-add-to-cart data-id="pan-frances" data-name="Pan francés" data-price="1400" data-unit="kg" data-emoji="🥖">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🥐</div>
+      <div class="body">
+        <span class="cat">Panadería</span>
+        <h2><a href="producto.html?id=facturas-surtidas">Facturas surtidas</a></h2>
+        <span class="unit">Docena</span>
+        <div class="row"><span class="price">$3.600</span><button type="button" class="btn" data-add-to-cart data-id="facturas-surtidas" data-name="Facturas surtidas" data-price="3600" data-unit="doc." data-emoji="🥐">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">🧴</div>
+      <div class="body">
+        <span class="cat">Limpieza</span>
+        <h2><a href="producto.html?id=detergente">Detergente x 750 ml</a></h2>
+        <span class="unit">Unidad</span>
+        <div class="row"><span class="price">$2.150</span><button type="button" class="btn" data-add-to-cart data-id="detergente" data-name="Detergente x 750 ml" data-price="2150" data-unit="un." data-emoji="🧴">Agregar</button></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="thumb">💧</div>
+      <div class="body">
+        <span class="cat">Bebidas</span>
+        <h2><a href="producto.html?id=agua-mineral">Agua mineral sin gas</a></h2>
+        <span class="unit">Botella 2 L</span>
+        <div class="row"><span class="price">$1.050</span><button type="button" class="btn" data-add-to-cart data-id="agua-mineral" data-name="Agua mineral sin gas" data-price="1050" data-unit="un." data-emoji="💧">Agregar</button></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -194,3 +191,4 @@
 <script src="cart.js"></script>
 </body>
 </html>
+

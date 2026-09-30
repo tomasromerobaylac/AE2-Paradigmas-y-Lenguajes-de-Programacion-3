@@ -1,55 +1,98 @@
-// Variable global para mantener el precio
-let precioActual = 0;
+const formatoPrecio = new Intl.NumberFormat('es-AR');
 
-// 1. Función Asíncrona para obtener el precio vía HTTP (fetch)
-async function consultarPrecio() {
-  try {
-    const respuesta = await fetch('precios.json');
-    if (!respuesta.ok) throw new Error("Error en la red");
-    
-    const datos = await respuesta.json();
-    precioActual = datos.precioActualizado;
-    
-    // Inyectamos el precio unitario en el DOM al cargar
-    document.getElementById('precio-unitario').textContent = precioActual.toLocaleString();
-    actualizarSubtotal();
-    
-  } catch (error) {
-    console.error("Error al obtener precios:", error);
+async function consultarPrecio(productoId) {
+  const respuesta = await fetch('precios.json');
+  if (!respuesta.ok) throw new Error('No se pudo consultar la lista de precios');
+
+  const productos = await respuesta.json();
+  const producto = productos.find((item) => item.productoId === productoId);
+  if (!producto || !Number.isFinite(producto.precioActualizado)) {
+    throw new Error(`No hay un precio válido para ${productoId}`);
   }
+
+  return producto.precioActualizado;
 }
 
-// 2. Función para actualizar el subtotal mutando el DOM
-function actualizarSubtotal() {
-  const cantidad = parseInt(document.getElementById('input-cantidad').value);
-  const subtotal = cantidad * precioActual;
-  
-  document.getElementById('subtotal-producto').textContent = subtotal.toLocaleString();
-}
+async function cargarFichaProducto() {
+  const respuesta = await fetch('productos.json');
+  if (!respuesta.ok) throw new Error('No se pudo cargar el catálogo');
 
-// 3. Controladores de Eventos (Event Listeners desacoplados)
-function configurarContadores() {
-  const btnIncrementar = document.getElementById('btn-incrementar');
-  const btnDecrementar = document.getElementById('btn-decrementar');
-  const inputCantidad = document.getElementById('input-cantidad');
+  const productos = await respuesta.json();
+  const productoId = new URLSearchParams(window.location.search).get('id') || 'tomate-perita';
+  const producto = productos.find((item) => item.id === productoId);
+  if (!producto) throw new Error(`No se encontró el producto ${productoId}`);
 
-  btnIncrementar.addEventListener('click', () => {
-    let cant = parseInt(inputCantidad.value);
-    inputCantidad.value = cant + 1;
-    actualizarSubtotal();
+  document.title = `${producto.nombre} — Mercado Fresco`;
+  document.querySelectorAll('[data-product-name]').forEach((elemento) => {
+    elemento.textContent = producto.nombre;
+  });
+  document.querySelectorAll('[data-product-category]').forEach((elemento) => {
+    elemento.textContent = producto.categoria;
+  });
+  document.querySelector('[data-product-description]').textContent = producto.descripcion;
+  document.querySelectorAll('[data-product-emoji]').forEach((elemento) => {
+    elemento.textContent = producto.emoji;
+  });
+  document.querySelectorAll('[data-product-unit]').forEach((elemento) => {
+    elemento.textContent = producto.unidad;
   });
 
-  btnDecrementar.addEventListener('click', () => {
-    let cant = parseInt(inputCantidad.value);
-    if (cant > 1) { // Evita cantidades negativas o cero
-      inputCantidad.value = cant - 1;
+  const precioAnterior = document.querySelector('[data-product-old-price]');
+  const badge = document.querySelector('[data-product-badge]');
+  if (producto.precioAnterior) {
+    precioAnterior.textContent = formatoPrecio.format(producto.precioAnterior);
+    precioAnterior.style.display = '';
+  } else {
+    precioAnterior.style.display = 'none';
+  }
+  if (producto.badge) {
+    badge.textContent = producto.badge;
+    badge.style.display = '';
+  } else {
+    badge.style.display = 'none';
+  }
+
+  const botonAgregar = document.querySelector('[data-add-to-cart]');
+  botonAgregar.dataset.id = producto.id;
+  botonAgregar.dataset.name = producto.nombre;
+  botonAgregar.dataset.price = producto.precio;
+  botonAgregar.dataset.unit = producto.unidad;
+  botonAgregar.dataset.emoji = producto.emoji;
+  return botonAgregar;
+}
+
+function configurarContador() {
+  const inputCantidad = document.querySelector('#input-cantidad');
+  const subtotal = document.querySelector('#subtotal-producto');
+  const precio = document.querySelector('#precio-unitario');
+  const botonAgregar = document.querySelector('[data-add-to-cart]');
+
+  if (!inputCantidad || !subtotal || !precio || !botonAgregar) return;
+
+  let precioUnitario = Number(botonAgregar.dataset.price);
+
+  function actualizarSubtotal() {
+    const cantidad = Math.max(1, Number.parseInt(inputCantidad.value, 10) || 1);
+    inputCantidad.value = cantidad;
+    subtotal.textContent = formatoPrecio.format(cantidad * precioUnitario);
+  }
+
+  inputCantidad.addEventListener('input', actualizarSubtotal);
+
+  cargarFichaProducto()
+    .then((boton) => consultarPrecio(boton.dataset.id).then((nuevoPrecio) => ({ boton, nuevoPrecio })))
+    .then(({ boton, nuevoPrecio }) => {
+      precioUnitario = nuevoPrecio;
+      precio.textContent = formatoPrecio.format(precioUnitario);
+      boton.dataset.price = precioUnitario;
       actualizarSubtotal();
-    }
-  });
+    })
+    .catch((error) => {
+      console.error('Error al cargar el precio actualizado:', error);
+      actualizarSubtotal();
+    });
+
+  actualizarSubtotal();
 }
 
-// 4. Inicialización al cargar la ventana
-window.addEventListener('load', () => {
-  consultarPrecio();
-  configurarContadores();
-});
+document.addEventListener('DOMContentLoaded', configurarContador);

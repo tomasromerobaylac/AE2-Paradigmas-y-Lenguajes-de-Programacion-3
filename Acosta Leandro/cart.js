@@ -117,6 +117,7 @@
     const delta = parseInt(stepBtn.dataset.qtyStep, 10);
     const next = Math.max(1, (parseInt(input.value, 10) || 1) + delta);
     input.value = next;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
 
     const cartId = wrap.dataset.cartId;
     if (cartId) setQty(cartId, next);

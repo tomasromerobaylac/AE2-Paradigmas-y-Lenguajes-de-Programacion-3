@@ -43,4 +43,4 @@ mercado-fresco/
 
 ## Cómo verlo
 
-Abrir `index.html` en el navegador. No requiere servidor ni instalación.
+Desde la carpeta del proyecto, iniciar un servidor local con `python3 -m http.server 8000` y abrir `http://localhost:8000`. No requiere instalar dependencias.

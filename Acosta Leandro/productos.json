@@ -6,7 +6,9 @@
     "precio": 1850,
     "unidad": "kg",
     "emoji": "🍅",
-    "badge": "-15%"
+    "badge": "-15%",
+    "precioAnterior": 2180,
+    "descripcion": "Tomate perita fresco de productores regionales, ideal para salsas y ensaladas. Seleccionado a diario para asegurar el mejor punto de maduración."
   },
   {
     "id": "papa-negra",
@@ -15,7 +17,18 @@
     "precio": 980,
     "unidad": "kg",
     "emoji": "🥔",
-    "badge": ""
+    "badge": "",
+    "descripcion": "Papa negra seleccionada, de pulpa firme y sabor suave, ideal para acompañamientos y comidas de todos los días."
+  },
+  {
+    "id": "banana-ecuatoriana",
+    "nombre": "Banana ecuatoriana",
+    "categoria": "Frutas y verduras",
+    "precio": 1320,
+    "unidad": "kg",
+    "emoji": "🍌",
+    "badge": "",
+    "descripcion": "Bananas dulces y frescas, ideales para disfrutar solas, en licuados o en tus recetas favoritas."
   },
   {
     "id": "leche-entera",
@@ -24,7 +37,28 @@
     "precio": 1150,
     "unidad": "un.",
     "emoji": "🥛",
-    "badge": ""
+    "badge": "",
+    "descripcion": "Leche entera La Serrana en sachet de un litro, una opción práctica para todos los días."
+  },
+  {
+    "id": "queso-cremoso",
+    "nombre": "Queso cremoso",
+    "categoria": "Lácteos",
+    "precio": 4200,
+    "unidad": "un.",
+    "emoji": "🧀",
+    "badge": "",
+    "descripcion": "Queso cremoso de textura suave, en presentación de 500 gramos."
+  },
+  {
+    "id": "yogur-frutilla",
+    "nombre": "Yogur bebible frutilla",
+    "categoria": "Lácteos",
+    "precio": 1680,
+    "unidad": "un.",
+    "emoji": "🍓",
+    "badge": "Poco stock",
+    "descripcion": "Yogur bebible sabor frutilla en botella de un litro."
   },
   {
     "id": "bife-chorizo",
@@ -33,6 +67,57 @@
     "precio": 9800,
     "unidad": "kg",
     "emoji": "🥩",
-    "badge": ""
+    "badge": "",
+    "descripcion": "Bife de chorizo seleccionado, ideal para la parrilla o la plancha."
+  },
+  {
+    "id": "milanesa-nalga",
+    "nombre": "Milanesa de nalga",
+    "categoria": "Carnicería",
+    "precio": 8100,
+    "unidad": "kg",
+    "emoji": "🍖",
+    "badge": "",
+    "descripcion": "Milanesas de nalga tiernas, listas para cocinar."
+  },
+  {
+    "id": "pan-frances",
+    "nombre": "Pan francés",
+    "categoria": "Panadería",
+    "precio": 1400,
+    "unidad": "kg",
+    "emoji": "🥖",
+    "badge": "",
+    "descripcion": "Pan francés elaborado diariamente, con corteza dorada y miga suave."
+  },
+  {
+    "id": "facturas-surtidas",
+    "nombre": "Facturas surtidas",
+    "categoria": "Panadería",
+    "precio": 3600,
+    "unidad": "doc.",
+    "emoji": "🥐",
+    "badge": "",
+    "descripcion": "Docena de facturas surtidas, recién horneadas."
+  },
+  {
+    "id": "detergente",
+    "nombre": "Detergente x 750 ml",
+    "categoria": "Limpieza",
+    "precio": 2150,
+    "unidad": "un.",
+    "emoji": "🧴",
+    "badge": "",
+    "descripcion": "Detergente líquido en envase de 750 ml."
+  },
+  {
+    "id": "agua-mineral",
+    "nombre": "Agua mineral sin gas",
+    "categoria": "Bebidas",
+    "precio": 1050,
+    "unidad": "un.",
+    "emoji": "💧",
+    "badge": "",
+    "descripcion": "Agua mineral sin gas en botella de dos litros."
   }
 ]
