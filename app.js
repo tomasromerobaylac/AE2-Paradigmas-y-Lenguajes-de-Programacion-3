@@ -76,10 +76,10 @@
   /* ---------- Render (manipulación del DOM) ---------- */
 
   function renderInventario() {
-    const tbody = document.getElementById("cuerpo-inventario");
-    const filtroCategoria = document.getElementById("filtro-categoria").value;
+    const tbody = document.querySelector("#cuerpo-inventario");
+    const filtroCategoria = document.querySelector("#filtro-categoria").value;
     const busqueda = document
-      .getElementById("buscador")
+      .querySelector("#buscador")
       .value.trim()
       .toLowerCase();
 
@@ -132,13 +132,13 @@
     const total = inventario.length;
     const criticos = inventario.filter(esCritico).length;
 
-    document.getElementById("resumen-total").textContent = total;
-    document.getElementById("resumen-criticos").textContent = criticos;
+    document.querySelector("#resumen-total").textContent = total;
+    document.querySelector("#resumen-criticos").textContent = criticos;
 
-    const banner = document.getElementById("banner-critico");
+    const banner = document.querySelector("#banner-critico");
     banner.style.display = criticos > 0 ? "flex" : "none";
     if (criticos > 0) {
-      document.getElementById("banner-critico-texto").textContent =
+      document.querySelector("#banner-critico-texto").textContent =
         criticos === 1
           ? "Hay 1 producto por debajo del umbral de stock."
           : `Hay ${criticos} productos por debajo del umbral de stock.`;
@@ -146,7 +146,7 @@
   }
 
   function mostrarEstado(texto, esError) {
-    const el = document.getElementById("estado-carga");
+    const el = document.querySelector("#estado-carga");
     el.textContent = texto;
     el.classList.toggle("mensaje-error", Boolean(esError));
   }
@@ -156,7 +156,7 @@
   function aplicarRol(rol) {
     rolActual = rol;
     document.body.classList.toggle("rol-empleado", rol === "empleado");
-    document.getElementById("rol-explicacion").textContent =
+    document.querySelector("#rol-explicacion").textContent =
       rol === "empleado"
         ? "Vista Empleado: se muestran las cantidades exactas y los controles para ajustar stock."
         : "Vista Cliente: solo se informa si el producto está disponible, sin cantidades ni controles internos.";
@@ -166,26 +166,26 @@
 
   function inicializar() {
     document
-      .getElementById("btn-refrescar")
+      .querySelector("#btn-refrescar")
       .addEventListener("click", cargarInventario);
 
     document
-      .getElementById("selector-rol")
+      .querySelector("#selector-rol")
       .addEventListener("change", (evento) => aplicarRol(evento.target.value));
 
     document
-      .getElementById("filtro-categoria")
+      .querySelector("#filtro-categoria")
       .addEventListener("change", renderInventario);
 
     document
-      .getElementById("buscador")
+      .querySelector("#buscador")
       .addEventListener("input", renderInventario);
 
     // Delegación de eventos: los botones +/- se generan dinámicamente
     // en cada render, así que el listener se pone una sola vez en el
     // contenedor padre y se identifica el botón clickeado con closest().
     document
-      .getElementById("cuerpo-inventario")
+      .querySelector("#cuerpo-inventario")
       .addEventListener("click", (evento) => {
         const boton = evento.target.closest("[data-stock-action]");
         if (!boton) return;
@@ -195,7 +195,7 @@
 
     // El estado inicial del rol se toma del propio <select> (fuente única
     // de verdad), no de una constante repetida en el JS.
-    aplicarRol(document.getElementById("selector-rol").value);
+    aplicarRol(document.querySelector("#selector-rol").value);
     cargarInventario();
   }
 

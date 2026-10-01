@@ -1,9 +1,5 @@
 [
   {
-    "productoId": "leche-entera",
-    "precioActualizado": 1150
-  },
-  {
     "productoId": "tomate-perita",
     "precioActualizado": 1850
   },
@@ -14,6 +10,10 @@
   {
     "productoId": "banana-ecuatoriana",
     "precioActualizado": 1320
+  },
+  {
+    "productoId": "leche-entera",
+    "precioActualizado": 1150
   },
   {
     "productoId": "queso-cremoso",
@@ -46,5 +46,21 @@
   {
     "productoId": "agua-mineral",
     "precioActualizado": 1050
+  },
+  {
+    "productoId": "arroz-largo-fino",
+    "precioActualizado": 1200
+  },
+  {
+    "productoId": "aceite-girasol",
+    "precioActualizado": 2400
+  },
+  {
+    "productoId": "alfajor-maicena",
+    "precioActualizado": 650
+  },
+  {
+    "productoId": "chocolate-barra",
+    "precioActualizado": 1800
   }
 ]

@@ -8,14 +8,16 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="container">
-    <span>Retiro en el local o envío a domicilio en el día</span>
-    <span>Lun a Sáb 8:00–21:00 · San Martín 452</span>
+<!-- Encabezado: agrupa la barra de contacto/horario y la navegación principal -->
+<header>
+  <div class="topbar">
+    <div class="container">
+      <span>Retiro en el local o envío a domicilio en el día</span>
+      <span>Lun a Sáb 8:00–21:00 · San Martín 452</span>
+    </div>
   </div>
-</div>
 
-<header class="nav">
+  <nav class="nav">
   <div class="container">
     <a href="index.html" class="brand">
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,10 +35,12 @@
     </nav>
     <a href="comprar.html" class="nav-cta">Ir a comprar <span class="cart-badge" data-cart-count>0</span></a>
   </div>
+  </nav>
 </header>
 
 <section class="section container">
-  <p class="breadcrumb" id="breadcrumb">
+  <!-- Migas de pan: se completan por JS una vez que se conoce el producto -->
+<p class="breadcrumb" id="breadcrumb">
     <a href="index.html">Inicio</a> · <span id="breadcrumb-cat">Catálogo</span> · <span id="breadcrumb-name">Producto</span>
   </p>
 
@@ -45,7 +49,8 @@
     <a href="listado_box.html" class="btn btn-mustard">Volver al catálogo</a>
   </div>
 
-  <div class="product-detail" id="product-detail">
+  <!-- Estructura fija; el contenido (nombre, precio, stock...) lo completa el script del final -->
+<div class="product-detail" id="product-detail">
     <div class="product-gallery">
       <div class="main-image" id="main-image">🍅</div>
       <div class="thumbs">
@@ -82,6 +87,14 @@
             <button type="button" aria-label="Sumar" data-qty-step="1">+</button>
           </div>
         </div>
+
+        <!-- Subtotal en tiempo real: se recalcula con cada cambio de cantidad
+             y con el precio consultado de forma asíncrona (ver precio-dinamico.js) -->
+        <div class="qty-row" style="border-top:1px solid var(--sage-100);padding-top:10px;">
+          <span style="font-weight:700;font-size:.85rem;color:var(--pine-800);">Subtotal</span>
+          <span id="producto-subtotal" style="font-family:'Bitter',serif;font-weight:700;font-size:1.15rem;color:var(--pine-800);">$0</span>
+        </div>
+
         <button type="button" id="add-btn" class="btn btn-mustard btn-block" data-add-to-cart data-redirect="comprar.html">
           Agregar y continuar compra
         </button>
@@ -90,6 +103,7 @@
   </div>
 </section>
 
+<!-- Pie de página, igual en las 5 pantallas -->
 <footer class="footer">
   <div class="container">
     <div>
@@ -103,6 +117,7 @@
         <li><a href="listado_tabla.html">Productos en tabla</a></li>
         <li><a href="listado_box.html">Productos en grilla</a></li>
         <li><a href="comprar.html">Comprar</a></li>
+        <li><a href="inventario.html">Panel de inventario (interno)</a></li>
       </ul>
     </div>
     <div>
@@ -119,6 +134,7 @@
   </div>
 </footer>
 
+<!-- Busca en products.js el producto pedido por ?id= y llena el HTML de arriba -->
 <script src="products.js"></script>
 <script src="cart.js"></script>
 <script>
@@ -127,42 +143,42 @@
   const product = window.MercadoProducts.find((p) => p.id === requestedId) || window.MercadoProducts[0];
 
   if (!product) {
-    document.getElementById('product-detail').style.display = 'none';
-    document.getElementById('product-not-found').style.display = 'block';
+    document.querySelector('#product-detail').style.display = 'none';
+    document.querySelector('#product-not-found').style.display = 'block';
   } else {
-    document.getElementById('breadcrumb-cat').innerHTML =
+    document.querySelector('#breadcrumb-cat').innerHTML =
       `<a href="listado_box.html?cat=${product.categorySlug}">${product.category}</a>`;
-    document.getElementById('breadcrumb-name').textContent = product.name;
+    document.querySelector('#breadcrumb-name').textContent = product.name;
 
     document.title = `${product.name} — Mercado Fresco`;
-    document.getElementById('main-image').textContent = product.emoji;
-    document.getElementById('thumb-1').textContent = product.emoji;
-    document.getElementById('thumb-2').textContent = product.emoji;
-    document.getElementById('thumb-3').textContent = product.emoji;
+    document.querySelector('#main-image').textContent = product.emoji;
+    document.querySelector('#thumb-1').textContent = product.emoji;
+    document.querySelector('#thumb-2').textContent = product.emoji;
+    document.querySelector('#thumb-3').textContent = product.emoji;
 
-    document.getElementById('product-cat').textContent = product.category;
-    document.getElementById('product-name').textContent = product.name;
-    document.getElementById('product-desc').textContent = product.description;
+    document.querySelector('#product-cat').textContent = product.category;
+    document.querySelector('#product-name').textContent = product.name;
+    document.querySelector('#product-desc').textContent = product.description;
 
-    document.getElementById('price-big').textContent = MercadoCart.formatPrice(product.price);
+    document.querySelector('#price-big').textContent = MercadoCart.formatPrice(product.price);
     if (product.discount && product.oldPrice) {
-      const oldEl = document.getElementById('price-old');
+      const oldEl = document.querySelector('#price-old');
       oldEl.textContent = MercadoCart.formatPrice(product.oldPrice);
       oldEl.style.display = 'inline';
       const pct = Math.round((1 - product.price / product.oldPrice) * 100);
-      const tagEl = document.getElementById('discount-tag');
+      const tagEl = document.querySelector('#discount-tag');
       tagEl.textContent = `-${pct}% esta semana`;
       tagEl.style.display = 'inline-block';
     }
 
-    document.getElementById('meta-unit').textContent = product.unit === 'kg' ? 'Kilogramo (kg)' : product.unit === 'doc.' ? 'Docena' : 'Unidad';
-    const stockEl = document.getElementById('meta-stock');
+    document.querySelector('#meta-unit').textContent = product.unit === 'kg' ? 'Kilogramo (kg)' : product.unit === 'doc.' ? 'Docena' : 'Unidad';
+    const stockEl = document.querySelector('#meta-stock');
     stockEl.textContent = product.stockQty;
     stockEl.className = product.stockLevel === 'low' ? 'stock-low' : 'stock-ok';
-    document.getElementById('meta-origin').textContent = product.origin;
-    document.getElementById('meta-cat').textContent = product.category;
+    document.querySelector('#meta-origin').textContent = product.origin;
+    document.querySelector('#meta-cat').textContent = product.category;
 
-    const addBtn = document.getElementById('add-btn');
+    const addBtn = document.querySelector('#add-btn');
     addBtn.dataset.id = product.id;
     addBtn.dataset.name = product.name;
     addBtn.dataset.price = product.price;
@@ -170,5 +186,6 @@
     addBtn.dataset.emoji = product.emoji;
   }
 </script>
+<script src="precio-dinamico.js"></script>
 </body>
 </html>

@@ -5,14 +5,10 @@
     "category": "Frutas y verduras",
     "categorySlug": "frutas-verduras",
     "price": 1850,
-    "oldPrice": 2180,
-    "discount": true,
     "unit": "kg",
     "emoji": "🍅",
-    "stockQty": "42 kg",
-    "stockLevel": "ok",
-    "origin": "Misiones, Argentina",
-    "description": "Tomate perita fresco de productores regionales, ideal para salsas y ensaladas."
+    "discount": true,
+    "stockLevel": "ok"
   },
   {
     "id": "papa-negra",
@@ -22,10 +18,8 @@
     "price": 980,
     "unit": "kg",
     "emoji": "🥔",
-    "stockQty": "120 kg",
-    "stockLevel": "ok",
-    "origin": "Buenos Aires, Argentina",
-    "description": "Papa negra de buen tamaño, ideal para hervir, freír o al horno."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "banana-ecuatoriana",
@@ -35,10 +29,8 @@
     "price": 1320,
     "unit": "kg",
     "emoji": "🍌",
-    "stockQty": "6 kg",
-    "stockLevel": "low",
-    "origin": "Ecuador",
-    "description": "Banana dulce y madura, perfecta para el desayuno o la merienda."
+    "discount": false,
+    "stockLevel": "low"
   },
   {
     "id": "leche-entera",
@@ -48,10 +40,8 @@
     "price": 1150,
     "unit": "un.",
     "emoji": "🥛",
-    "stockQty": "88 un.",
-    "stockLevel": "ok",
-    "origin": "Santa Fe, Argentina",
-    "description": "Leche entera pasteurizada en sachet de 1 litro."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "queso-cremoso",
@@ -61,10 +51,8 @@
     "price": 4200,
     "unit": "un.",
     "emoji": "🧀",
-    "stockQty": "30 un.",
-    "stockLevel": "ok",
-    "origin": "Córdoba, Argentina",
-    "description": "Queso cremoso artesanal en bolsa de 500 g."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "yogur-frutilla",
@@ -74,10 +62,8 @@
     "price": 1680,
     "unit": "un.",
     "emoji": "🍓",
-    "stockQty": "4 un.",
-    "stockLevel": "low",
-    "origin": "Santa Fe, Argentina",
-    "description": "Yogur bebible sabor frutilla en botella de 1 litro."
+    "discount": false,
+    "stockLevel": "low"
   },
   {
     "id": "bife-chorizo",
@@ -87,10 +73,8 @@
     "price": 9800,
     "unit": "kg",
     "emoji": "🥩",
-    "stockQty": "25 kg",
-    "stockLevel": "ok",
-    "origin": "Misiones, Argentina",
-    "description": "Bife de chorizo de novillo, corte clásico para la parrilla."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "milanesa-nalga",
@@ -100,10 +84,8 @@
     "price": 8100,
     "unit": "kg",
     "emoji": "🍖",
-    "stockQty": "18 kg",
-    "stockLevel": "ok",
-    "origin": "Misiones, Argentina",
-    "description": "Milanesas de nalga finitas, listas para pasar por pan rallado."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "pan-frances",
@@ -113,10 +95,8 @@
     "price": 1400,
     "unit": "kg",
     "emoji": "🥖",
-    "stockQty": "60 kg",
-    "stockLevel": "ok",
-    "origin": "Elaboración propia",
-    "description": "Pan francés horneado varias veces al día."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "facturas-surtidas",
@@ -126,10 +106,8 @@
     "price": 3600,
     "unit": "doc.",
     "emoji": "🥐",
-    "stockQty": "3 doc.",
-    "stockLevel": "low",
-    "origin": "Elaboración propia",
-    "description": "Docena de facturas surtidas recién horneadas."
+    "discount": false,
+    "stockLevel": "low"
   },
   {
     "id": "detergente",
@@ -139,10 +117,8 @@
     "price": 2150,
     "unit": "un.",
     "emoji": "🧴",
-    "stockQty": "40 un.",
-    "stockLevel": "ok",
-    "origin": "Buenos Aires, Argentina",
-    "description": "Detergente concentrado para vajilla."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "agua-mineral",
@@ -152,10 +128,8 @@
     "price": 1050,
     "unit": "un.",
     "emoji": "💧",
-    "stockQty": "75 un.",
-    "stockLevel": "ok",
-    "origin": "Córdoba, Argentina",
-    "description": "Agua mineral natural sin gas, botella de 2 litros."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "arroz-largo-fino",
@@ -165,10 +139,8 @@
     "price": 1200,
     "unit": "kg",
     "emoji": "🍚",
-    "stockQty": "50 kg",
-    "stockLevel": "ok",
-    "origin": "Entre Ríos, Argentina",
-    "description": "Arroz largo fino tipo 000, grano suelto."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "aceite-girasol",
@@ -178,10 +150,8 @@
     "price": 2400,
     "unit": "un.",
     "emoji": "🫒",
-    "stockQty": "35 un.",
-    "stockLevel": "ok",
-    "origin": "Santa Fe, Argentina",
-    "description": "Aceite de girasol puro, botella de litro y medio."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "alfajor-maicena",
@@ -191,10 +161,8 @@
     "price": 650,
     "unit": "un.",
     "emoji": "🍪",
-    "stockQty": "60 un.",
-    "stockLevel": "ok",
-    "origin": "Buenos Aires, Argentina",
-    "description": "Alfajor de maicena relleno de dulce de leche."
+    "discount": false,
+    "stockLevel": "ok"
   },
   {
     "id": "chocolate-barra",
@@ -204,9 +172,7 @@
     "price": 1800,
     "unit": "un.",
     "emoji": "🍫",
-    "stockQty": "45 un.",
-    "stockLevel": "ok",
-    "origin": "Córdoba, Argentina",
-    "description": "Chocolate con leche en barra de 150 g."
+    "discount": false,
+    "stockLevel": "ok"
   }
 ]

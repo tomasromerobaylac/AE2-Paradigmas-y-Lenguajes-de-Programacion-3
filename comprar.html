@@ -183,8 +183,8 @@
 
   function renderCart() {
     const cart = MercadoCart.getCart();
-    const list = document.getElementById('cart-list');
-    const emptyMsg = document.getElementById('cart-empty-msg');
+    const list = document.querySelector('#cart-list');
+    const emptyMsg = document.querySelector('#cart-empty-msg');
     list.innerHTML = '';
 
     if (MercadoCart.isStorageBlocked()) {
@@ -192,9 +192,9 @@
         '⚠️ Tu navegador está bloqueando el guardado del carrito en este archivo abierto localmente. ' +
         'Abrí el sitio con un servidor local (por ejemplo <code>python -m http.server</code>) en vez de hacer doble clic en el .html.';
       emptyMsg.style.display = 'block';
-      document.getElementById('cart-subtotal').textContent = MercadoCart.formatPrice(0);
-      document.getElementById('cart-shipping').textContent = MercadoCart.formatPrice(0);
-      document.getElementById('cart-total').textContent = MercadoCart.formatPrice(0);
+      document.querySelector('#cart-subtotal').textContent = MercadoCart.formatPrice(0);
+      document.querySelector('#cart-shipping').textContent = MercadoCart.formatPrice(0);
+      document.querySelector('#cart-total').textContent = MercadoCart.formatPrice(0);
       return;
     }
 
@@ -221,13 +221,13 @@
     const shipping = cart.length > 0 ? SHIPPING : 0;
     const discount = cuponValido ? subtotal * 0.10 : 0;
 
-    document.getElementById('cart-subtotal').textContent = MercadoCart.formatPrice(subtotal);
-    document.getElementById('cart-shipping').textContent = MercadoCart.formatPrice(shipping);
-    document.getElementById('cart-total').textContent = MercadoCart.formatPrice(subtotal - discount + shipping);
+    document.querySelector('#cart-subtotal').textContent = MercadoCart.formatPrice(subtotal);
+    document.querySelector('#cart-shipping').textContent = MercadoCart.formatPrice(shipping);
+    document.querySelector('#cart-total').textContent = MercadoCart.formatPrice(subtotal - discount + shipping);
 
-    const discountRow = document.getElementById('cart-discount-row');
+    const discountRow = document.querySelector('#cart-discount-row');
     if (cuponValido && subtotal > 0) {
-      document.getElementById('cart-discount').textContent = '-' + MercadoCart.formatPrice(discount);
+      document.querySelector('#cart-discount').textContent = '-' + MercadoCart.formatPrice(discount);
       discountRow.style.display = 'flex';
     } else {
       discountRow.style.display = 'none';
@@ -243,8 +243,8 @@
    *    correspondiente (.mensaje-error o .mensaje-exito) al <p>.
    */
   function validarCupon() {
-    const input = document.getElementById('cupon');
-    const mensaje = document.getElementById('mensaje-cupon');
+    const input = document.querySelector('#cupon');
+    const mensaje = document.querySelector('#mensaje-cupon');
 
     const codigo = input.value.trim().toUpperCase();
 
@@ -268,8 +268,8 @@
     renderCart(); // recalcula subtotal/descuento/total con el nuevo estado
   }
 
-  document.getElementById('btn-cupon').addEventListener('click', validarCupon);
-  document.getElementById('cupon').addEventListener('keydown', function (e) {
+  document.querySelector('#btn-cupon').addEventListener('click', validarCupon);
+  document.querySelector('#cupon').addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       e.preventDefault();
       validarCupon();
@@ -283,8 +283,8 @@
     renderCart();
   });
 
-  const form = document.getElementById('checkout-form');
-  const cartError = document.getElementById('cart-error');
+  const form = document.querySelector('#checkout-form');
+  const cartError = document.querySelector('#cart-error');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -313,11 +313,11 @@
 
     if (!valid) return;
 
-    const nombre = document.getElementById('nombre').value.trim();
-    document.getElementById('confirm-text').textContent =
+    const nombre = document.querySelector('#nombre').value.trim();
+    document.querySelector('#confirm-text').textContent =
       `Gracias, ${nombre}. Registramos tu pedido y te contactaremos para coordinar la entrega.`;
-    document.getElementById('checkout-form').style.display = 'none';
-    document.getElementById('confirm-panel').style.display = 'block';
+    document.querySelector('#checkout-form').style.display = 'none';
+    document.querySelector('#confirm-panel').style.display = 'block';
     MercadoCart.clearCart();
     cuponValido = false;
   });
