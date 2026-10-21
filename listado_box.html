@@ -256,12 +256,23 @@
     const cat = window.MercadoCategories.find((c) => c.slug === catSlug);
     const catName = cat ? cat.name : catSlug;
     document.querySelector('#catalog-title').textContent = catName;
-    document.querySelector('#catalog-desc').innerHTML =
-      `Mostrando productos de "${catName}". <a href="listado_box.html">Ver todo el catálogo</a>.`;
+    // Se arma con nodos y .textContent (no innerHTML): catName puede venir de la URL.
+    const desc = document.querySelector('#catalog-desc');
+    const verTodo = document.createElement('a');
+    verTodo.href = 'listado_box.html';
+    verTodo.textContent = 'Ver todo el catálogo';
+    desc.textContent = `Mostrando productos de "${catName}". `;
+    desc.appendChild(verTodo);
+    desc.appendChild(document.createTextNode('.'));
   } else if (onlyOffers) {
     document.querySelector('#catalog-title').textContent = 'Ofertas de la semana';
-    document.querySelector('#catalog-desc').innerHTML =
-      'Productos con descuento esta semana. <a href="listado_box.html">Ver todo el catálogo</a>.';
+    const descOfertas = document.querySelector('#catalog-desc');
+    const verTodoOfertas = document.createElement('a');
+    verTodoOfertas.href = 'listado_box.html';
+    verTodoOfertas.textContent = 'Ver todo el catálogo';
+    descOfertas.textContent = 'Productos con descuento esta semana. ';
+    descOfertas.appendChild(verTodoOfertas);
+    descOfertas.appendChild(document.createTextNode('.'));
   }
 </script>
 <script src="catalogo-filtro.js"></script>
