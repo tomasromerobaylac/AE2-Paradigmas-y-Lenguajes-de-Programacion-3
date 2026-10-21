@@ -32,6 +32,7 @@
       <a href="listado_tabla.html">Productos (tabla)</a>
       <a href="listado_box.html">Productos (grilla)</a>
       <a href="producto.html">Ficha de producto</a>
+      <span id="auth-status" class="nav-account"></span>
     </nav>
     <a href="comprar.html" class="nav-cta" aria-current="page">Ir a comprar <span class="cart-badge" data-cart-count>0</span></a>
   </div>
@@ -177,6 +178,7 @@
 
 <!-- Renderiza el carrito guardado y valida el formulario antes de "confirmar" -->
 <script src="cart.js"></script>
+<script src="auth.js"></script>
 <script>
   const SHIPPING = 800;
   let cuponValido = false; // true si el usuario ya aplicó "UCP10" con éxito

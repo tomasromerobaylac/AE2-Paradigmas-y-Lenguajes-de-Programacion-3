@@ -140,6 +140,37 @@ p{margin:0 0 1em;color:var(--ink-soft);}
 }
 .nav-cta:hover{background:var(--pine-700);}
 
+/* ---------- Estado de sesión en el header (auth.js) ---------- */
+.nav-account{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  font-weight:700;
+  font-size:.95rem;
+}
+.nav-account a{
+  padding:6px 2px;
+  border-bottom:2px solid transparent;
+  color:var(--pine-800);
+}
+.nav-account a:hover{
+  border-bottom-color:var(--mustard-500);
+  color:var(--pine-900);
+}
+.auth-saludo{color:var(--pine-800);}
+.btn-logout-link{
+  background:none;
+  border:none;
+  padding:0;
+  font-weight:700;
+  font-size:.95rem;
+  font-family:inherit;
+  color:var(--pine-700);
+  text-decoration:underline;
+  cursor:pointer;
+}
+.btn-logout-link:hover{color:var(--pine-900);}
+
 /* ---------- Buttons ---------- */
 .btn{
   display:inline-flex;

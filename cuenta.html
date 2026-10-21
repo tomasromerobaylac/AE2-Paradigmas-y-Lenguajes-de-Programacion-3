@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi cuenta — Mercado Fresco</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Encabezado: agrupa la barra de contacto/horario y la navegación principal -->
+<header>
+  <div class="topbar">
+    <div class="container">
+      <span>Retiro en el local o envío a domicilio en el día</span>
+      <span>Lun a Sáb 8:00–21:00 · San Martín 452</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="34" height="34" rx="4" fill="#16281C"/>
+        <path d="M9 13h16l-1.6 10.4a2 2 0 0 1-2 1.6H12.6a2 2 0 0 1-2-1.6L9 13Z" stroke="#E8A93B" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M13 13v-1.5a4 4 0 0 1 8 0V13" stroke="#E8A93B" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Mercado Fresco<small>ALMACÉN DE BARRIO</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="listado_tabla.html">Productos (tabla)</a>
+      <a href="listado_box.html">Productos (grilla)</a>
+      <a href="producto.html">Ficha de producto</a>
+      <span id="auth-status" class="nav-account"></span>
+    </nav>
+    <a href="comprar.html" class="nav-cta">Ir a comprar <span class="cart-badge" data-cart-count>0</span></a>
+  </div>
+  </nav>
+</header>
+
+<section class="section container">
+  <div class="section-head">
+    <div>
+      <h2 id="cuenta-titulo">Mi cuenta</h2>
+      <p id="cuenta-desc">Iniciá sesión o creá una cuenta para guardar tus datos de cliente.</p>
+    </div>
+  </div>
+
+  <!-- Pestañas: alternan entre el formulario de ingreso y el de registro -->
+  <div class="role-switch" id="cuenta-tabs">
+    <button type="button" class="btn btn-outline" id="tab-login" data-tab="login">Iniciar sesión</button>
+    <button type="button" class="btn btn-outline" id="tab-registro" data-tab="registro">Crear cuenta</button>
+  </div>
+
+  <!-- VISTA: formulario de login -->
+  <div class="form-card" id="vista-login">
+    <h2>Ingresar</h2>
+    <p id="msg-login" class="loading-note" style="display:none;"></p>
+    <form id="form-login" novalidate>
+      <div class="field full">
+        <label for="login-email">Correo electrónico</label>
+        <input type="email" id="login-email" placeholder="nombre@correo.com" required>
+      </div>
+      <div class="field full">
+        <label for="login-pass">Contraseña</label>
+        <input type="password" id="login-pass" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn btn-mustard btn-block">Ingresar</button>
+    </form>
+  </div>
+
+  <!-- VISTA: formulario de registro -->
+  <div class="form-card" id="vista-registro" style="display:none;">
+    <h2>Crear cuenta nueva</h2>
+    <p id="msg-registro" class="loading-note" style="display:none;"></p>
+    <form id="form-registro" novalidate>
+      <div class="field full">
+        <label for="reg-nombre">Nombre y apellido</label>
+        <input type="text" id="reg-nombre" placeholder="Ej: María Gómez" required>
+      </div>
+      <div class="field full">
+        <label for="reg-email">Correo electrónico</label>
+        <input type="email" id="reg-email" placeholder="nombre@correo.com" required>
+      </div>
+      <div class="field full">
+        <label for="reg-pass">Contraseña</label>
+        <input type="password" id="reg-pass" placeholder="Mínimo 6 caracteres" required>
+      </div>
+      <button type="submit" class="btn btn-mustard btn-block">Crear cuenta</button>
+    </form>
+  </div>
+
+  <!-- VISTA: panel privado, visible solo con sesión activa -->
+  <div class="form-card" id="vista-panel" style="display:none;">
+    <h2>Hola, <span id="panel-nombre"></span></h2>
+    <ul class="meta-list">
+      <li><span>Correo electrónico</span><span id="panel-email"></span></li>
+      <li><span>Tipo de cuenta</span><span id="panel-rol"></span></li>
+    </ul>
+    <button type="button" id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
+  </div>
+</section>
+
+<!-- Pie de página, igual en todas las pantallas -->
+<footer class="footer">
+  <div class="container">
+    <div>
+      <h4>Mercado Fresco</h4>
+      <p>Almacén de barrio con envío a domicilio. Productos frescos elegidos todos los días.</p>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="listado_tabla.html">Productos en tabla</a></li>
+        <li><a href="listado_box.html">Productos en grilla</a></li>
+        <li><a href="comprar.html">Comprar</a></li>
+        <li><a href="inventario.html">Panel de inventario (interno)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li>San Martín 452, Posadas</li>
+        <li>(0376) 444-2210</li>
+        <li>hola@mercadofresco.com.ar</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container bottom">
+    Trabajo práctico académico — Paradigmas y Lenguajes de Programación III.
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="cart.js"></script>
+<script src="auth.js"></script>
+<script src="cuenta.js"></script>
+</body>
+</html>
